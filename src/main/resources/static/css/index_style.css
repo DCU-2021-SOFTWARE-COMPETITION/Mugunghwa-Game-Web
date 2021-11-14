@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+	font-family: 'Do Hyeon', sans-serif;
+}
+body {
+	background-image: url(../img/black.png);
+	background-size: cover;
+	transition: background-image 0.5s;
+}
+
+body.onmouse {
+	background-image: url(../img/subway.jpg);
+}
+section {
+	text-align: center;
+	width: 700px;
+	padding: 30px;
+	/*background-color: rgb(223, 195, 159);*/
+	background-image: url(../img/myungham.jpeg);
+	margin: 30vh auto;
+	box-shadow: 20px 20px 30px rgba(0,0,0,0.5);
+	border-radius: 10px;
+}
+section div {
+	margin-bottom: 10px;
+}
+section img {
+	width: 500px;
+	height: 150;
+	object-fit: cover;
+}
+section div div {
+	width: 150px;
+	height: 150px;
+	border: black solid 10px;
+	display: inline-block;
+	margin-right: 10px;
+}
+
+section div #circle {
+	border-radius: 50%;
+}
+
+section div #triangle {
+	border-top: rgb(223, 195, 159);
+	border-left: rgb(223, 195, 159);
+	border-right: rgb(223, 195, 159);
+}
+section div #sqaure {
+	margin-right: 0;
+}
+
+section h1 {
+	font-size: 60px;
+	font-weight: lighter;
+	margin-bottom: 10px;
+}
+
+form input {
+	width: 100px;
+	height: 30px;
+	background-color: salmon;
+	border-radius: 10px;
+	font-size: larger;
+	color: black;
+	transition-property: color background-color;
+	transition-duration: 0.5s;
+}
+
+form input:hover {
+	background-color: rgb(52, 26, 22);
+	color: beige;
+}
+

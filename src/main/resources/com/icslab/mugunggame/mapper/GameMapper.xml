@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.icslab.mugunggame.mapper.GameMapper">
+
+  <resultMap type="com.icslab.mugunggame.dto.User"
+    id="userinfo" >
+    <result property="idx" column="idx"/>
+    <result property="identificationNumber" column="identification_Number"/>
+    <result property="userName" column="name"/>
+    <result property="recordScore" column="record_Score"/>
+  </resultMap>
+
+  <insert id="join" parameterType="com.icslab.mugunggame.dto.User">
+    INSERT INTO user
+        (
+            idx,
+            identification_Number,
+            name
+
+        )
+    VALUES
+        (
+            NEXTVAL(idx),
+            #{identificationNumber},
+            #{userName}
+        )
+  </insert>
+
+  <select id ="findLastuser" resultMap="userinfo">
+    SELECT *
+    FROM user
+    order by idx DESC LIMIT 1
+  </select>
+
+  <update id="saveRecord" parameterType="com.icslab.mugunggame.dto.User">
+    UPDATE user
+    SET record_Score = #{recordScore}
+    WHERE identification_Number = #{identificationNumber}
+  </update>
+</mapper>
