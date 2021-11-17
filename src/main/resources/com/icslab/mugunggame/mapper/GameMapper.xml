@@ -38,4 +38,10 @@
     SET record_Score = #{recordScore}
     WHERE identification_Number = #{identificationNumber}
   </update>
+
+  <delete id="deletRecord">
+    DELETE
+    FROM user
+    WHERE record_Score is null
+  </delete>
 </mapper>

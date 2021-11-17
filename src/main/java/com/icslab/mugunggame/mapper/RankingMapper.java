@@ -1,0 +1,14 @@
+package com.icslab.mugunggame.mapper;
+
+import com.icslab.mugunggame.dto.User;
+import java.util.List;
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
+public interface RankingMapper {
+
+    List<User> clearShowUser();
+
+    int userCount();
+
+}

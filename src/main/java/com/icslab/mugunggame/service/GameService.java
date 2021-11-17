@@ -16,51 +16,39 @@ public class GameService {
     @Autowired
     private GameMapper gameMapper;
 
-
+    /* 게임 참가 */
     public void join(User user){
         gameMapper.join(user);
         return ;
     }
 
-    public String reciveFinishTime(String recordScore){
-        return gameMapper.reciveFinishTime(recordScore);
-    }
-
+    /* 마지막 참가자 찾기 */
     public User findLastUser(User user){
         return gameMapper.findLastuser(user);
     }
 
+    /* 게임 기록 저장 */
     public void saveRecord(String recordScore, String identificationNumber){
         gameMapper.saveRecord(recordScore, identificationNumber);
-    };
-
-    public void excueteRun() throws IOException, InterruptedException {
-        String[] command = new String[] { "Python3", "test" };
-        GameService runner = new GameService();
-        runner.byRuntime(command);
-        runner.byProcessBuilder(command);
-        runner.byProcessBuilderRedirect(command);
     }
 
-    public void byProcessBuilderRedirect(String[] command)
-        throws IOException, InterruptedException {
-        ProcessBuilder builder = new ProcessBuilder(command);
-        builder.redirectOutput(Redirect.INHERIT);
-        builder.redirectError(Redirect.INHERIT);
-        builder.start();
+    /* 기록 삭제 */
+    public void deleteRecord(){
+        gameMapper.deletRecord();
+    }
+
+    /* 외부 프로그램 실행 */
+    /* 파이썬 코드를 실행 시키기 위함 */
+    public void excueteRun() throws IOException, InterruptedException {
+        String[] command = new String[] { "python3", "test.py" };
+        GameService runner = new GameService();
+        runner.byRuntime(command);
     }
 
     public void byRuntime(String[] command)
         throws IOException, InterruptedException {
         Runtime runtime = Runtime.getRuntime();
         Process process = runtime.exec(command);
-        printStream(process);
-    }
-
-    public void byProcessBuilder(String[] command)
-        throws IOException,InterruptedException {
-        ProcessBuilder builder = new ProcessBuilder(command);
-        Process process = builder.start();
         printStream(process);
     }
 
