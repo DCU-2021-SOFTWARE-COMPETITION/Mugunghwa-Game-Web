@@ -33,6 +33,12 @@
     order by idx DESC LIMIT 1
   </select>
 
+  <select id="findUser" resultMap="userinfo">
+    select *
+    FROM user
+    WHERE identification_Number = #{identificationNumber}
+  </select>
+
   <update id="saveRecord" parameterType="com.icslab.mugunggame.dto.User">
     UPDATE user
     SET record_Score = #{recordScore}
@@ -43,5 +49,11 @@
     DELETE
     FROM user
     WHERE record_Score is null
+  </delete>
+
+  <delete id="deleteUser">
+    DELETE
+    FROM user
+    WHERE identification_Number = #{identificationNumber} AND name = #{name};
   </delete>
 </mapper>
