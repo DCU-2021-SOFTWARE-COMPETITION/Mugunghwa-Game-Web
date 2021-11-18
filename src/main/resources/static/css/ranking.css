@@ -31,6 +31,10 @@ h1 {
     margin-bottom: 5px;
 }
 
+#category div:last-child {
+    padding-right: 5px; 
+}
+
 ul {
     list-style: none;
 
@@ -55,5 +59,8 @@ div {
 }
 
 li div:last-child {
+    width: 72px;
     margin-right: 0;
+    text-align: right;
 }
+
