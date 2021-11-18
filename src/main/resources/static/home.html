@@ -12,7 +12,7 @@
 </head>
 
 <body>
-  <audio src="sound/explain.mp3" autoplay loop></audio>
+  <audio src="sound/explain1.mp3" autoplay></audio>
   <section>
     <h1>참가 동의서</h1>
     <p>제 1항, 참가자는 임의로 게임을 중단할 수 없다.</p>
@@ -21,9 +21,9 @@
     <article id="main">
       <form id="testform">
         <label for="identificationNumber">학번 : </label>
-        <input type="text" name="identificationNumber" id="identificationNumber" required />
+        <input type="text" name="identificationNumber" id="identificationNumber" placeholder="5자리 혹은 8자리 입력" required />
         <label for="userName">이름 : </label>
-        <input type="text" name="userName" id="userName" required />
+        <input type="text" name="userName" id="userName" placeholder="2 ~ 8 자리 입력" required />
         <br>
         <input type="button" value="비동의" id="backPage" onclick="location.href='index.html'">
         <input type="button" value="동의" id="listButton" onclick="onClickSubmit()" />

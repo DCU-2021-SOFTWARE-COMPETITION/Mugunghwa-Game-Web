@@ -13,14 +13,18 @@ axios
 
 function loadList() {
     for (let i = 0; i < rankData.length; i++) {
-        let listName = document.createElement('ul');
+        let listName = document.createElement('li');
 
-        let spanName = document.createElement('span');
+        let spanRanking = document.createElement('div');
+        spanRanking.innerText = `${i + 1} 위`;
+
+        let spanName = document.createElement('div');
         spanName.innerText = rankData[i].userName;
 
-        let spanScore = document.createElement('span');
-        spanScore.innerText = rankData[i].recordScore;
+        let spanScore = document.createElement('div');
+        spanScore.innerText = `${rankData[i].recordScore}초`;
 
+        listName.appendChild(spanRanking);
         listName.appendChild(spanName);
         listName.appendChild(spanScore);
 
