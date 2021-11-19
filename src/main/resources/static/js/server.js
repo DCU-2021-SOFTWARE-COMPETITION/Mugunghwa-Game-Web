@@ -17,6 +17,7 @@ function onClickSubmit() {
             .catch(function (err) {
                 console.log(err);
             });
+        location.replace("index.html");
     }
     else {
         alert("이름 : 2~8자리, 학번 : 5자리 혹은 8자리로 입력해주세요!");
