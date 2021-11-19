@@ -5,11 +5,11 @@ import com.icslab.mugunggame.mapper.GameMapper;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.lang.ProcessBuilder.Redirect;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+@Slf4j
 @Service
 public class GameService {
 
@@ -18,8 +18,18 @@ public class GameService {
 
     /* 게임 참가 */
     public void join(User user){
-        gameMapper.join(user);
-        return ;
+
+        //사용자가 존재 하지 않을 경우
+        if(user.getIdentificationNumber() == null){
+            log.info("사용자 존재 하지 않을 경우");
+            gameMapper.join(user);
+        }
+        //사용자가 존재 할경우
+        else {
+            log.info("사용자 존재 할 경우");
+            deleteUser(user.getIdentificationNumber(), user.getUserName());
+            gameMapper.join(user);
+        }
     }
 
     /* 마지막 참가자 찾기 */
@@ -28,13 +38,23 @@ public class GameService {
     }
 
     /* 게임 기록 저장 */
-    public void saveRecord(String recordScore, String identificationNumber){
+    public void saveRecord(float recordScore, String identificationNumber){
         gameMapper.saveRecord(recordScore, identificationNumber);
     }
 
-    /* 기록 삭제 */
+    /* Null 기록 삭제 */
     public void deleteRecord(){
         gameMapper.deletRecord();
+    }
+
+    /* 특정 인물 삭제 */
+    public void deleteUser(String identificationNumber, String name){
+        gameMapper.deleteUser(identificationNumber,name);
+    }
+
+    /*참가자 기존 기록 여부 확인*/
+    public User findUser(String identificationNumber){
+        return gameMapper.findUser(identificationNumber);
     }
 
     /* 외부 프로그램 실행 */

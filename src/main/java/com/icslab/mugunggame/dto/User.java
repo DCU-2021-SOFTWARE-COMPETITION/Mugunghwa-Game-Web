@@ -21,7 +21,7 @@ public class User {
     String userName;
 
     /*기록*/
-    String recordScore;
+    float recordScore;
 
 
 }
