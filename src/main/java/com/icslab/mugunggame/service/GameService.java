@@ -39,7 +39,16 @@ public class GameService {
 
     /* 게임 기록 저장 */
     public void saveRecord(float recordScore, String identificationNumber){
+        /* 사용자가 기록이 0 일때 */
+        if (recordScore == 0.0){
+            User user1 = gameMapper.findUser(identificationNumber);
+            deleteUser(user1.getIdentificationNumber(), user1.getUserName());
+        }
+
+        /* 정상 기록이 들어 왔을 때 */
+        else {
         gameMapper.saveRecord(recordScore, identificationNumber);
+        }
     }
 
     /* Null 기록 삭제 */
@@ -50,11 +59,6 @@ public class GameService {
     /* 특정 인물 삭제 */
     public void deleteUser(String identificationNumber, String name){
         gameMapper.deleteUser(identificationNumber,name);
-    }
-
-    /*참가자 기존 기록 여부 확인*/
-    public User findUser(String identificationNumber){
-        return gameMapper.findUser(identificationNumber);
     }
 
     /* 외부 프로그램 실행 */

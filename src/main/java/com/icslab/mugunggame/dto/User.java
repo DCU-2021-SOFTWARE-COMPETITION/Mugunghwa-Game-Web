@@ -23,5 +23,4 @@ public class User {
     /*기록*/
     float recordScore;
 
-
 }

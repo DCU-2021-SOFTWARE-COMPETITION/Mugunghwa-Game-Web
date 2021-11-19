@@ -43,13 +43,14 @@ public class HomeController {
 
     //게임 기록 저장
     @PostMapping(value = "/record")
-    public void saveRecordTime(User user){
+    public float saveRecordTime(@RequestBody User user){
+        float record = user.getRecordScore();
         User user1 = gameService.findLastUser(user);
         String id = user1.getIdentificationNumber();
         String name = user1.getUserName();
-        gameService.saveRecord(user.getRecordScore(),id);
-        user1 = gameService.findLastUser(user);
-        log.info(name + "님의 기록이 "+ user1.getRecordScore()+"로 저장되었습니다.");
+        gameService.saveRecord(record,id);
+        log.info(name + "님의 기록이 "+ record+"로 저장되었습니다.");
+        return record;
     }
 
     //성공한 User 수 구하기
@@ -64,4 +65,15 @@ public class HomeController {
         return rankingService.clearUser();
     }
 
+    @PostMapping(value = "/motiondetec")
+    public void detectMotion(@RequestBody Integer value){
+        User user = null;
+        User user1 = gameService.findLastUser(user);
+        /*if (value == 1) {
+            if (Float.paruser1.getRecordScore() = null;){
+                gameService.deleteUser(user1.getIdentificationNumber(), user1.getUserName());
+            }*/
+        }
 }
+
+

@@ -19,8 +19,9 @@ public interface GameMapper {
     /* 기록 삭제 */
     void deletRecord();
 
-    /*참가자 기존 기록 여부 확인*/
+    /*참가자 특정 사용자 찾기*/
     User findUser(String identificationNumber);
+
 
     /* 특정 인물 삭제 */
     void deleteUser(String identificationNumber, String name);
