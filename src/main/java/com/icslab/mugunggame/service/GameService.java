@@ -64,7 +64,7 @@ public class GameService {
     /* 외부 프로그램 실행 */
     /* 파이썬 코드를 실행 시키기 위함 */
     public void excueteRun() throws IOException, InterruptedException {
-        String[] command = new String[] { "python3", "test.py" };
+        String[] command = new String[] { "python3", "detectObjAndStartGame.py" };
         GameService runner = new GameService();
         runner.byRuntime(command);
     }
